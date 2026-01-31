@@ -8,6 +8,9 @@ import {
   splitCompilerOutput,
 } from "@/lib/vibeprompt";
 
+// GitHub Pages(static export) 빌드를 위해 명시적으로 static 처리
+export const dynamic = "force-static";
+
 type GenerateBody = {
   selectedScope: "project" | "agent";
   selectedAgents?: string[];
@@ -20,6 +23,17 @@ function badRequest(message: string) {
 }
 
 export async function POST(req: Request) {
+  // GitHub Pages에서는 서버 API가 동작하지 않으므로, 실수로 호출될 경우 안내 메시지 반환
+  if (process.env.NEXT_PUBLIC_BASE_PATH) {
+    return NextResponse.json(
+      {
+        error:
+          "GitHub Pages는 정적 호스팅이라 /api/generate가 동작하지 않습니다. 로컬(dev) 또는 서버 배포(Vercel 등)에서 사용하세요.",
+      },
+      { status: 501 },
+    );
+  }
+
   let body: GenerateBody;
   try {
     body = (await req.json()) as GenerateBody;

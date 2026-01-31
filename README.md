@@ -1,4 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## VibePrompt OS Web
+
+자유 입력을 기반으로 **실행용 프롬프트(Claude Code/GPT/Cursor 투입용)**를 생성하기 위한 1인용 웹앱입니다.
+
+### 로컬 실행
+
+```bash
+npm install
+npm run dev
+```
+
+환경변수는 `env.example`를 참고해서 설정하세요(서버에서만 사용).
+
+### GitHub Pages에서 확인하기(정적 배포)
+
+이 레포는 GitHub Actions로 **Next.js static export** 결과(`out/`)를 GitHub Pages로 배포합니다.
+
+- 배포 워크플로우: `.github/workflows/deploy-pages.yml`
+- Pages URL(프로젝트 페이지): `https://habitree.github.io/prompt/`
+
+주의: GitHub Pages는 정적 호스팅이라 `app/api/*` 같은 서버 API 라우트는 동작하지 않습니다.
 
 ## Getting Started
 
