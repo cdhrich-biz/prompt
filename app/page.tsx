@@ -36,7 +36,7 @@ export default function Home() {
 
   const handleGenerate = async () => {
     if (!userInput.trim()) {
-      setError("자유 입력을 작성해주세요.");
+      setError("자유 입력을 작성해주세요.-");
       return;
     }
     if (selectedScope === "agent" && selectedAgents.length === 0) {
